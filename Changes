@@ -1,0 +1,6 @@
+Revision history for App-PericmdUtils
+
+0.01    2015-07-30 (PERLANCAR) (unreleased)
+
+        - First release, merged from App-DumpPericmdScript &
+          App-DetectPericmdScript.

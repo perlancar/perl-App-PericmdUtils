@@ -1,3 +1,9 @@
+0.03    2017-01-09 (PERLANCAR)
+
+        - Adjust to Perinci::CmdLine::Util 0.12 & Perinci::CmdLine::Dump 0.07
+          (renamed functions).
+
+
 0.02    2016-01-18 (PERLANCAR)
 
         - No functional changes.

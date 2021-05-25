@@ -1,3 +1,9 @@
+0.050   2021-05-25  Released-By: PERLANCAR; Urgency: high
+
+	- [build] Rebuild to update Sah coercion module names (old Sah coercion
+          modules have been purged from CPAN).
+
+
 0.04    2017-01-13  Released-By: PERLANCAR
 
 	- Add utility: gen-pod-for-pericmd-script.

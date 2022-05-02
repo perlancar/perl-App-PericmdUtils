@@ -1,9 +1,61 @@
 package App::PericmdUtils;
 
+use 5.010001;
+use strict;
+use warnings;
+
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
-use 5.010001;
+our %SPEC;
+
+$SPEC{list_pericmd_plugins} = {
+    v => 1.1,
+    summary => "List Perinci::CmdLine plugins",
+    description => <<'_',
+
+This utility lists Perl modules in the `Perinci::CmdLine::Plugin::*` namespace.
+
+_
+    args => {
+        # XXX use common library
+        detail => {
+            schema => 'bool*',
+            cmdline_aliases => {l=>{}},
+        },
+    },
+};
+sub list_pericmd_plugins {
+    require Module::List::Tiny;
+    my %args = @_;
+
+    my $mods = Module::List::Tiny::list_modules(
+        "Perinci::CmdLine::Plugin::",
+        {list_modules => 1, recurse=>1},
+    );
+
+    my @rows;
+    for my $mod (sort keys %$mods) {
+        my $name = $mod; $name =~ s/^Perinci::CmdLine::Plugin:://;
+        my $row = {name => $name};
+        if ($args{detail}) {
+            require Module::Abstract;
+            $row->{abstract} = Module::Abstract::module_abstract($mod);
+        }
+        push @rows, $row;
+    }
+
+    my %resmeta;
+    if ($args{detail}) {
+        $resmeta{'table.fields'} = ['name', 'abstract'];
+    } else {
+        @rows = map { $_->{name} } @rows;
+    }
+
+    [200, "OK", \@rows, \%resmeta];
+}
 
 1;
 #ABSTRACT: Some utilities related to Perinci::CmdLine

@@ -90,4 +90,6 @@ L<Perinci>
 
 L<App::PerinciUtils>
 
+L<peri-doc> (from L<Perinci::To::Doc>)
+
 =cut

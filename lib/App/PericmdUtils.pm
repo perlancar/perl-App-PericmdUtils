@@ -26,6 +26,10 @@ _
             cmdline_aliases => {l=>{}},
         },
     },
+    examples => [
+        {argv=>[]},
+        {argv=>['-l'], summary=>'Show details'},
+    ],
 };
 sub list_pericmd_plugins {
     require Module::List::Tiny;
